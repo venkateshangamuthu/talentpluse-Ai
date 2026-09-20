@@ -6,6 +6,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38BDF8.svg?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![n8n Integration](https://img.shields.io/badge/n8n-Workflow_AI-FF6D5A.svg?style=flat-square&logo=n8n)](https://n8n.io/)
 [![Google Gemini](https://img.shields.io/badge/AI-Google_Gemini-4285F4.svg?style=flat-square&logo=google)](https://deepmind.google/technologies/gemini/)
+[![RAG Architecture](https://img.shields.io/badge/AI-RAG_Model-8A2BE2.svg?style=flat-square)](https://github.com/praveen2007-VY/Buildathon_finals)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
 
 ---
@@ -14,7 +15,7 @@
 
 **TalentPulse AI Enterprise Platform** is a dual-portal HR Intelligence OS and Employee Career Growth ecosystem engineered for enterprise talent strategy, internal workforce mobility, and automated skill gap remediation.
 
-Powered by **n8n Webhook Orchestration** and **Google Gemini AI Agents**, TalentPulse links frontend career coaching and HR gap analysis with automated serverless workflows, structured schema parsers, versioned profile building, and audit logging.
+Powered by **Retrieval-Augmented Generation (RAG) Model Architecture**, **n8n Webhook Orchestration**, and **Google Gemini AI Agents**, TalentPulse dynamically retrieves enterprise context (employee histories, verified skills, and role benchmarks) to ground AI models with real-time data for precise career coaching, structured schema parsing, versioned profile building, and audit logging.
 
 ---
 
@@ -32,11 +33,11 @@ flowchart TB
         UI --> HRPortal
     end
 
-    subgraph n8n_Workflows ["n8n Backend Automation Engine"]
-        subgraph WF1 ["Career Assistant & HR Agent Workflows"]
-            W1_In[Webhook Trigger] --> W1_Get[Get Row / Database Lookup]
+    subgraph n8n_Workflows ["n8n Backend Automation Engine & RAG Retrieval Pipeline"]
+        subgraph WF1 ["RAG-Driven Career Assistant & HR Agent Workflows"]
+            W1_In[Webhook Trigger] --> W1_Get[RAG Context Retrieval / Database Lookup]
             W1_Get --> W1_Agent[Career Assistant / HR Agent Node]
-            W1_Agent <--> W1_Gemini[Google Gemini Chat Model]
+            W1_Agent <--> W1_Gemini[Google Gemini LLM RAG Model]
             W1_Agent <--> W1_Schema[Career Guidance Output Schema]
             W1_Agent --> W1_JS[Code in JavaScript Post-Processor]
             W1_JS --> W1_Out[Respond Node]
@@ -161,8 +162,9 @@ Orchestrates deep resume/profile processing, dual Gemini analysis (Skill Analysi
 | **Frontend Framework** | Vanilla JavaScript (ES6+ Modules) | Lightweight, zero-framework SPA architecture |
 | **Build Tooling** | [Vite 5.4](https://vitejs.dev/) | Fast HMR development server and production bundler |
 | **CSS & Design System** | Tailwind CSS v3 + Stitch Token Palette | Custom extended Material Design 3 enterprise color tokens |
+| **AI RAG Architecture** | [Retrieval-Augmented Generation (RAG)](https://github.com/praveen2007-VY/Buildathon_finals) | Context retrieval pipeline fetching enterprise profile & benchmark data |
 | **Workflow Engine** | [n8n](https://n8n.io/) Automation Backend | Serverless Webhook pipelines with data persistence & audit logging |
-| **AI LLM Models** | [Google Gemini](https://deepmind.google/technologies/gemini/) | Chat & Analysis models with structured output parsers |
+| **AI LLM Models** | [Google Gemini](https://deepmind.google/technologies/gemini/) | RAG-grounded LLM Chat & Analysis models with structured output parsers |
 | **Icons & Typography** | Google Fonts & Material Symbols | Inter, Plus Jakarta Sans & Material Symbols Outlined |
 | **Data Engine** | Reactive LocalStorage Store | Persistent browser state with fallback seed data |
 
